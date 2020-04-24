@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app"/>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React App</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- <script src="../pages/assets/js/jquery.themepunch.revolution.js"></script>
+    <script src="../pages/assets/js/jquery.themepunch.plugins.min.js"></script> -->
+    <!-- <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="pages/assets/js/react-rev-slider.min.js"></script> -->
+      <script type="text/javascript">
+            $('.loader').css('opacity', 0);
+             setTimeout(function(){
+                $('.loader').hide();
+                $("#video")[0].autoplay = true;
+                $("#video").toggleClass("overlay-off");
+                   }, 4200);
+                   $(function() {
+                         counter();
+                   });
+              $(window).scroll(function() { 
+                  var scroll = $(window).scrollTop();
+                   if (scroll >= 100) {
+                      $("#site-header").addClass("fixed");
+                      $("#site-header-inner").addClass("small_header");
+                     
+                   }else{
+                    $("#site-header").removeClass("fixed");
+                    $("#site-header-inner").removeClass("small_header");
+                   }
+              });
+
+              var counter = function() {
+                  if ( $().countTo ) {
+                      $('.themesflat-counter').on('on-appear', function() {
+                          $(this).find('.number').each(function() {
+                              var to = $(this).data('to'),
+                                  speed = $(this).data('speed');
+                                  
+                              $(this).countTo({
+                                  to: to,
+                                  speed: speed
+                              });
+                          });
+                      });
+                  }
+              };
+
+              var videoPopup = function() {
+                  if ( $().magnificPopup ) {
+                      $('.popup-video').magnificPopup({
+                          disableOn: 700,
+                          type: 'iframe',
+                          mainClass: 'mfp-fade',
+                          removalDelay: 160,
+                          preloader: false,
+                          fixedContentPos: true
+                      });
+                  };
+              };
+               $('.hero-slider').flexslider({});
+     </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
