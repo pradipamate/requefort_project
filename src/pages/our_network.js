@@ -140,7 +140,7 @@ class our_network extends Component {
                                                 <div class="text-wrap">
                                                     <div class="number-wrap font-heading text-white">
                                                             <span class="prefix"></span>
-                                                            <span class="number accent" data-speed="3000" data-to="7513" data-inviewport="yes">
+                                                            <span class="number accent ddd" data-speed="3000" data-to="7513" data-inviewport="yes">
                                                             <CountUp start={0} end={7513} delay={6} /></span>
                                                             <span class="suffix">+</span>
                                                     </div>
