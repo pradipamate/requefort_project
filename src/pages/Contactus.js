@@ -9,30 +9,68 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import {Contactformdata,fetchstudent} from './action/contactinfo';
 
-
-
-
-
 class Contactus extends Component {
     constructor(props) {
         super(props);
-        this.state={name:"", mobileno:"", email:"", message:""}
-       
+        // this.state={name:"", mobileno:"", email:"", message:""}
+        this.state={
+            name:null,
+            mobileno:null,
+            email:null, 
+            message:null,
+            errors:{name:"", mobileno:"", email:"", message:"",}
+        }
         // for sending data
-        this.submithandler=this.submithandler.bind(this);
+        this.submithandler = this.submithandler.bind(this);
         // for mailing
-        this.sendMail=this.sendMail.bind(this);
-    }
+        this.sendMail = this.sendMail.bind(this);
+      }
 
     changehandler=(event)=>{
            console.log(event.target.value);
-           this.setState({[event.target.name]:event.target.value})
+           this.setState({[event.target.name]:event.target.value});
+           const{ name , value } = event.target;
+           var errors = this.state.errors;
+           const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+           const validphonenoregex = RegExp(/^\d{10}$/);
+        //    const validphonenoregex = RegExp(/^\d{10}$/);
+        //    const validateForm = (errors)=>{
+        //     let valid = true;
+        //     Object.value(errors).forEach(
+        //         (val)=>val.length > 0  && (valid = false)
+        //     );
+        //     return valid;
+        //     }
+           
+           switch(name){
+                case 'name':
+                errors.name = value.length < 5
+                ? 'Name is always in letters': '';
+                break;
+                case 'mobileno':
+                errors.mobileno = validphonenoregex.test(value)
+                ? '' : 'Phone is invalid';
+                break;
+                case 'email':
+                errors.mobileno = validphonenoregex.test(value)
+                ? '' : 'Email is invalid';
+                break;
+                case 'message':
+                errors.mobileno = validphonenoregex.test(value)
+                ? '' : 'Message is invalid';
+                break;
+                default:
+                break;
+           }
+           this.setState({errors, [name]:value })
     }
 
+   
 
     // for fetching data throw api
-componentDidMount() {
-            this.props.dispatch(fetchstudent()); }
+    componentDidMount() {
+        this.props.dispatch(fetchstudent()); 
+    }
 
 
 // for submitt Form data
@@ -57,17 +95,24 @@ componentDidMount() {
         bodyFormData.set('mobileno', this.state.mobileno);
         bodyFormData.set('email', this.state.email);
         bodyFormData.set('message', this.state.message);
-        this.props.dispatch(Contactformdata(bodyFormData));
+       
+        // if(validateForm(this.props.errors))
+        // {
+        //     alert("please check details")
+        // }else{
+        //     this.props.dispatch(Contactformdata(bodyFormData));
+
+        // }
+
     }
 
     sendMail() {
         alert();
-        window.Email.send({
-            
-        //    SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
-            Host : "45.113.122.73",
-            Username : "gaurav@socialstardom.in",
-            Password : "gJ8404#@#@",
+           window.Email.send({  
+        //SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
+            Host : "smtp.googlemail.com",
+            Username : "pradipamate07@gmail.com",
+            Password : "53775377p",
            To : 'pradipmate07@gmail.com',
            From : "you@isp.com",
            Subject : "This is the subject",
@@ -79,7 +124,7 @@ componentDidMount() {
       
     render() {
         // for adding state
-        const{name,mobileno,email,message}=this.state;
+        const{name,mobileno,email,message,errors}=this.state;
        
         //for feteching data
         // const studentAlldata=this.props.studentdetails;
@@ -192,11 +237,13 @@ componentDidMount() {
                                          <Col sm={6}>
                                             <Form.Group controlId="formBasicEmail">
                                                        <Form.Control type="text" placeholder="YOUR NAME*"  onChange={this.changehandler}  name="name"  value={name}  />
+                                                           {errors.name.length > 0 && <span className="danger">{errors.name}</span>}
                                             </Form.Group>
                                          </Col>
                                          <Col sm={6}>
                                            <Form.Group controlId="formBasicEmail">
                                                        <Form.Control type="text" placeholder="YOUR PHONE*"  onChange={this.changehandler} name="mobileno" value={mobileno} />
+                                                       {errors.mobileno.length > 0 && <span className="danger">{errors.mobileno}</span>}
                                             </Form.Group>
                                          </Col>
                                          <Col sm={12}>
@@ -224,7 +271,7 @@ componentDidMount() {
                                      </Row>
                                     </Form>
                                  </Col>
-                                 {/* <button onClick={this.sendMail} > Send Mail </button> */}
+                                 <button onClick={this.sendMail} > Send Mail </button>
                                  <Col sm={4}>
                                     <div className="themesflat-contact-info">
                                                     <div className="inner">
