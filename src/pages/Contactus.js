@@ -23,7 +23,7 @@ class Contactus extends Component {
         // for sending data
         this.submithandler = this.submithandler.bind(this);
         // for mailing
-        this.sendMail = this.sendMail.bind(this);
+        // this.sendMail = this.sendMail.bind(this);
       }
 
     changehandler=(event)=>{
@@ -106,21 +106,21 @@ class Contactus extends Component {
 
     }
 
-    sendMail() {
-        alert();
-           window.Email.send({  
-        //SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
-            Host : "smtp.googlemail.com",
-            Username : "pradipamate07@gmail.com",
-            Password : "53775377p",
-           To : 'pradipmate07@gmail.com',
-           From : "you@isp.com",
-           Subject : "This is the subject",
-           Body : "And this is the body"
-       }).then(
-     message => alert(message)
-   );
- }
+//     sendMail() {
+//         alert();
+//            window.Email.send({  
+//             SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
+//             Host : "smtp.googlemail.com",
+//             Username : "pradipamate07@gmail.com",
+//             Password : "53775377p",
+//             To : 'pradipmate07@gmail.com',
+//             From : "you@isp.com",
+//             Subject : "This is the subject",
+//             Body : "And this is the body"
+//        }).then(
+//      message => alert(message)
+//    );
+//  }
       
     render() {
         // for adding state
@@ -271,7 +271,7 @@ class Contactus extends Component {
                                      </Row>
                                     </Form>
                                  </Col>
-                                 <button onClick={this.sendMail} > Send Mail </button>
+                                 {/* <button onClick={this.sendMail} > Send Mail </button> */}
                                  <Col sm={4}>
                                     <div className="themesflat-contact-info">
                                                     <div className="inner">
