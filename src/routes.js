@@ -9,6 +9,8 @@ import Services from './pages/services.js';
 import OurNetwork from './pages/our_network.js';
 import NewMedia from './pages/news_media.js';
 import ContactUs from './pages/Contactus.js';
+import ExtraUs from './pages/ExtraUs.js';
+
 class routes extends Component {
 
     render() {
@@ -28,6 +30,7 @@ class routes extends Component {
                        <Route exact path='/our_network' component={OurNetwork}/>  
                        <Route exact path='/news_media' component={NewMedia}/>
                        <Route exact path='/contact_us' component={ContactUs}/>
+                       <Route exact path='/extra_us' component={ExtraUs}/>
                     </Switch>
                   </Router>
                 </div>             

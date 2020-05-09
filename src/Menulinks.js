@@ -25,6 +25,7 @@ class Menulinks extends Component {
                              <Link to="/our_network">OUR NETWORK</Link> 
                              <Link to="/news_media">News & media</Link>
                              <Link to="/contact_us">Contact Us</Link> 
+                             <Link to="/extra_us">extra Us</Link> 
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

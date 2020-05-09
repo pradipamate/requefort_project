@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import Routes from './routes';
 // for store
 import mystore from './pages/store/store';
+import { createStore, applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
 // 
 

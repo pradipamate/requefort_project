@@ -258,7 +258,7 @@
  .display-block { display: block !important; }
  .display-inline { display: inline !important; }
  
- .text-accent-color { color: #00abc9; }
+ .text-accent-color{color: #00afc9; }
  .danger{color: red;}
  .text-white { color: #fff !important; }
  .text-dark { color: #333 !important; }

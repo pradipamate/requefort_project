@@ -32,7 +32,23 @@ class Home extends Component {
                 },
            
         }
+        this.videostart=this.Videostart.bind(this);
     }
+
+    componentDidMount() {
+        console.log("component did mount");
+        this.videostart();
+
+    }
+    Videostart() {
+        // setTimeout(function () {
+            //alert();
+            var Video = document.getElementById('video');
+            console.log(Video);
+            Video.autoplay = true;
+        // }, 4200);
+    }
+
 
     render() {
         // const config = {
@@ -135,7 +151,7 @@ class Home extends Component {
                             </div>
                             
                             <div class="video-wrapper">
-                                <video controls id="video" autoplay   muted loop>
+                                <video controls id="video" autoplay muted loop>
                                     <source type="video/webm" src={require('../pages/assets/video/video.webm')} />
                                     <source type="video/mp4" src={require('../pages/assets/video/video.mp4')} />
                                     <source type="video/ogg" src={require('../pages/assets/video/video.ogv')} />	
